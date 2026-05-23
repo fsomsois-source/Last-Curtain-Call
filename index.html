@@ -359,9 +359,29 @@ body{
 
 /* Investigation Board */
 .board-wrap{
-  position:relative;width:100%;overflow:hidden;line-height:0;
+  position:relative;width:100%;overflow-y:auto;overflow-x:hidden;line-height:0;
 }
 .board-img{width:100%;height:auto;display:block;}
+.bz{position:absolute;cursor:pointer;}
+.bz-blur{
+  position:absolute;inset:0;
+  backdrop-filter:blur(5px) brightness(.4);
+  -webkit-backdrop-filter:blur(5px) brightness(.4);
+}
+.bz-lock{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;
+}
+.bz-open{border:1px solid transparent;transition:border .15s;}
+.bz-open:active{border-color:rgba(201,168,76,.5);}
+.bz-tap{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Oswald',sans-serif;font-size:.52rem;letter-spacing:.12em;
+  color:rgba(201,168,76,.0);transition:color .15s;
+}
+.bz-open:active .bz-tap{color:rgba(201,168,76,.8);}
 .board-seam{
   position:absolute;left:0;right:0;
   top:35.5%;height:3%;
@@ -389,7 +409,7 @@ body{
   font-size:1rem;opacity:.75;z-index:1;
 }
 
-/* Case File Grid */
+/* Case File */
 .cf-header{
   display:flex;align-items:center;flex-wrap:wrap;gap:6px;
   padding:8px 12px;border-bottom:1px solid rgba(201,168,76,.15);
@@ -398,10 +418,10 @@ body{
 .cf-count{font-family:'Oswald',sans-serif;font-size:.6rem;letter-spacing:.1em;color:var(--fog);margin-left:auto;}
 .cf-sealed-status{font-family:'Oswald',sans-serif;font-size:.55rem;letter-spacing:.1em;color:var(--crimson);}
 .cf-open-status{font-family:'Oswald',sans-serif;font-size:.55rem;letter-spacing:.1em;color:var(--correct);}
-.cf-grid{display:flex;flex-direction:column;gap:0;}
-.cf-cell{position:relative;width:100%;overflow:hidden;border-bottom:1px solid rgba(0,0,0,.4);}
-.cf-img{width:100%;height:auto;display:block;}
-.cf-img-blur{filter:blur(8px) brightness(.45);transform:scale(1.05);}
+
+
+
+
 .cf-lock-overlay{
   position:absolute;inset:0;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
@@ -493,6 +513,12 @@ body{
   </div>
 </section>
 
+
+<!-- ════════ DOC OVERLAY ════════ -->
+<div id="docOverlay" onclick="G.closeDoc()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:600;align-items:center;justify-content:center;padding:20px;">
+  <img id="docOverlayImg" src="" alt="" style="max-width:100%;max-height:90dvh;object-fit:contain;border:1px solid rgba(201,168,76,.3);">
+  <div style="position:absolute;top:16px;right:16px;font-family:'Oswald',sans-serif;font-size:.65rem;letter-spacing:.16em;color:var(--fog);cursor:pointer;">CLOSE ✕</div>
+</div>
 <!-- ════════ CASE OVERLAY ════════ -->
 <div id="caseOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:500;overflow-y:auto;padding:28px 20px;">
   <div style="max-width:480px;margin:0 auto;">
@@ -639,17 +665,30 @@ const BOARD_ZONES = {
 // ═══════════════════════════════════════
 const ASSETS = "https://fsomsois-source.github.io/Last-Curtain-Call";
 const STOP1_CODE = "1894";
-const FRAGS = {
+const BOARD_URL = "https://fsomsois-source.github.io/Last-Curtain-Call/board.webp";
+
+const DOC_URLS = {
+  0:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_00_augusta_thorne.webp",
   1:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_01_blackwell_receipt.webp",
   2:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_02_police_statement.webp",
+  3:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_08_lyceum_chronicle.webp",
   4:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_04_suspects_board.webp",
   5:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_05_somerset_contract.webp",
   6:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_06_ravensdale_letter.webp",
   7:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_07_eleanor_lily.webp",
   8:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_08_lyceum_chronicle.webp",
-  0:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_00_augusta_thorne.webp",
-  3:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_08_lyceum_chronicle.webp",
 };
+const BOARD_ZONES = [
+  { sid:7, l: 0, t: 0,  w:33, h:34 },
+  { sid:4, l:33, t: 0,  w:34, h:55 },
+  { sid:5, l:67, t: 0,  w:33, h:55 },
+  { sid:8, l: 0, t:34,  w:33, h:34 },
+  { sid:3, l: 0, t:68,  w:33, h:32 },
+  { sid:2, l:33, t:55,  w:34, h:23 },
+  { sid:6, l:67, t:55,  w:33, h:23 },
+  { sid:1, l:33, t:78,  w:34, h:22 },
+  { sid:0, l:67, t:78,  w:33, h:22 },
+];
 
 const ROUTES = {
   1:{name:"Rouge",  en:"Red",    color:"#c0392b", stops:[1,2,5,6], strong:false},
@@ -1151,6 +1190,18 @@ window.G = {
     window.scrollTo(0,0);
   },
 
+  openDoc(sid){
+    const url = DOC_URLS[sid];
+    if(!url) return;
+    const overlay = document.getElementById('docOverlay');
+    document.getElementById('docOverlayImg').src = url;
+    overlay.style.display = 'flex';
+  },
+
+  closeDoc(){
+    document.getElementById('docOverlay').style.display = 'none';
+  },
+
   showCase(){
     document.getElementById('caseOverlay').style.display='block';
     window.scrollTo(0,0);
@@ -1535,45 +1586,26 @@ function _renderCaseFile(){
   const content=document.getElementById('baliseContent');
   const finaleUnlocked=S.finaleRevealed||false;
 
-  // Which stop IDs has this team solved?
   const unlockedStops=new Set();
   route.stops.forEach((cid,i)=>{ if(team.solved[i]) unlockedStops.add(cid); });
   if(finaleUnlocked) unlockedStops.add(0);
 
   const nSolved=team.solved.filter(Boolean).length;
-  const nTotal=8; // Augusta not counted until finale
+  const nUnlocked=unlockedStops.size;
 
-  // Fragment order: visual layout matching the board
-  const FRAG_ORDER=[7,4,5,8,3,2,0,1,6];
-  const FRAG_LABELS={
-    7:'Eleanor to Lily · 15 Feb 1894',
-    4:'Case Notes · Leicester Square',
-    5:'Somerset House · Agreement',
-    8:'Lyceum Theatre · American Tour',
-    3:'The Daily Chronicle · 15 Feb 1894',
-    2:'Metropolitan Police · Witness Statement',
-    0:'Augusta Thorne · Letter (SEALED)',
-    1:'H. Blackwell & Co. · Receipt',
-    6:'Ravensdale Pictures · Letter',
-  };
-
-  let rows='';
-  FRAG_ORDER.forEach(sid=>{
-    const locked = sid===0 ? !finaleUnlocked : !unlockedStops.has(sid);
-    const img = FRAGS[sid] || '';
-    const label = FRAG_LABELS[sid]||'';
+  // Build zone overlays
+  let zones='';
+  BOARD_ZONES.forEach(z=>{
+    const locked = z.sid===0 ? !finaleUnlocked : !unlockedStops.has(z.sid);
+    const docUrl = DOC_URLS[z.sid] || '';
     if(locked){
-      rows+=`<div class="cf-cell cf-locked">
-        <img class="cf-img cf-img-blur" src="${img}" alt="">
-        <div class="cf-lock-overlay">
-          <div class="cf-lock-icon">${sid===0?'🔐':'🔒'}</div>
-          <div class="cf-lock-label">${sid===0?'Sealed until final verdict':'Evidence locked'}</div>
-        </div>
+      zones+=`<div class="bz" style="left:${z.l}%;top:${z.t}%;width:${z.w}%;height:${z.h}%;">
+        <div class="bz-blur"></div>
+        <div class="bz-lock">${z.sid===0?'🔐':'🔒'}</div>
       </div>`;
     } else {
-      rows+=`<div class="cf-cell cf-open">
-        <img class="cf-img" src="${img}" alt="${label}">
-        <div class="cf-doc-label">${label}</div>
+      zones+=`<div class="bz bz-open" style="left:${z.l}%;top:${z.t}%;width:${z.w}%;height:${z.h}%;" onclick="G.openDoc(${z.sid})">
+        <div class="bz-tap">TAP TO VIEW</div>
       </div>`;
     }
   });
@@ -1581,11 +1613,13 @@ function _renderCaseFile(){
   content.innerHTML=`
     <div class="cf-header">
       <span class="cf-title">INVESTIGATION BOARD</span>
-      <span class="cf-count">${nSolved} / ${nTotal} DOCUMENTS</span>
-      <span class="cf-status ${finaleUnlocked?'cf-open-status':'cf-sealed-status'}">${finaleUnlocked?'LETTER REVEALED':'LETTER SEALED'}</span>
+      <span class="cf-count">${nUnlocked} / 8</span>
+      <span class="cf-status ${finaleUnlocked?'cf-open-status':'cf-sealed-status'}">${finaleUnlocked?'REVEALED':'SEALED'}</span>
     </div>
-    <div class="cf-grid">${rows}</div>
-    <div class="cf-footer">The Augusta Thorne letter is revealed only after the final word.</div>
+    <div class="board-wrap">
+      <img class="board-img" src="${BOARD_URL}" alt="Board">
+      ${zones}
+    </div>
   `;
 }
 
