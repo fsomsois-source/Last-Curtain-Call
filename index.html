@@ -131,6 +131,7 @@ body{
 .btab.done{color:var(--gold);}
 .btab.casefile{color:var(--gold);border-bottom-color:transparent;}
 .btab.casefile.active{border-bottom-color:var(--gold);}
+.btab.suspects-tab{color:var(--crimson);border-bottom-color:transparent;}
 
 /* Timer */
 .timer-row{
@@ -322,6 +323,68 @@ body{
 .finale-orn{font-size:.7rem;letter-spacing:.5em;color:var(--gold);opacity:.6;text-align:center;margin-bottom:16px;display:block;}
 .finale-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gold-lt);text-align:center;margin-bottom:4px;}
 .finale-sub{font-family:'Oswald',sans-serif;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--fog);text-align:center;margin-bottom:24px;}
+
+/* Common Ordeal - parchment look like BF */
+.ordeal-letters{
+  display:flex;gap:32px;justify-content:center;
+  margin:8px 0 18px;flex-wrap:wrap;
+}
+.ord-letter-cell{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.ord-letter-char{
+  font-family:'Playfair Display',serif;font-size:4.5rem;font-weight:700;
+  color:var(--crimson);line-height:1;
+  text-shadow:0 1px 0 rgba(0,0,0,.4);
+}
+.ord-letter-pos{
+  width:32px;height:32px;border-radius:50%;
+  background:var(--ink);color:var(--parch);
+  font-family:'Oswald',sans-serif;font-weight:600;font-size:.85rem;
+  display:flex;align-items:center;justify-content:center;
+}
+.ordeal-lang-tabs{
+  display:flex;justify-content:center;gap:0;
+  margin:0 0 18px;
+  border:1px solid var(--ink);
+  width:fit-content;margin-left:auto;margin-right:auto;
+  background:var(--parch);
+}
+.ordeal-lang-btn{
+  background:transparent;border:none;
+  font-family:'Oswald',sans-serif;font-size:.7rem;letter-spacing:.15em;
+  padding:8px 22px;color:var(--ink);cursor:pointer;
+}
+.ordeal-lang-btn.active{
+  background:var(--ink);color:var(--parch);
+}
+.ordeal-mission{
+  background:var(--parch);
+  color:var(--ink);
+  border:1px solid rgba(0,0,0,.15);
+  padding:18px 22px;margin:0 0 18px;
+  font-family:'Playfair Display',serif;font-size:.95rem;line-height:1.5;
+}
+.ordeal-mission p{margin:0 0 12px;}
+.ordeal-mission ul{margin:0 0 12px;padding-left:20px;}
+.ordeal-mission li{margin-bottom:8px;}
+.ordeal-mission-label{
+  font-family:'Oswald',sans-serif;font-size:.75rem;letter-spacing:.18em;
+  color:var(--crimson);margin-bottom:14px;font-weight:600;
+}
+.ord-inline{
+  font-family:'Playfair Display',serif;font-weight:700;
+  font-size:1.15rem;color:var(--ink);
+}
+.ord-badge{
+  display:inline-block;background:var(--crimson);color:var(--parch);
+  font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:.08em;
+  padding:2px 9px;margin:0 2px;border-radius:1px;
+}
+.ord-final{
+  color:var(--crimson);font-style:italic;
+  border-top:1px solid rgba(0,0,0,.12);padding-top:12px;margin-top:14px;
+}
 .finale-clue{
   background:var(--cream);color:#1a0e06;padding:18px;margin-bottom:20px;
   border:1px solid rgba(150,120,60,.3);
@@ -329,6 +392,68 @@ body{
 }
 .finale-clue-attr{font-family:'Oswald',sans-serif;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--crimson);margin-top:8px;display:block;}
 .suspect-grid{display:grid;gap:10px;margin-bottom:16px;}
+.anag-box{
+  border:1px solid rgba(201,168,76,.25);
+  background:rgba(8,4,2,.35);
+  padding:14px;margin:0 0 20px;border-radius:3px;
+}
+.anag-label{
+  font-family:'Oswald',sans-serif;font-size:.58rem;letter-spacing:.16em;
+  color:var(--gold);text-align:center;margin-bottom:10px;
+}
+.anag-output{
+  min-height:42px;
+  border:1px dashed rgba(201,168,76,.3);
+  background:rgba(0,0,0,.25);
+  font-family:'Playfair Display',serif;font-size:1.5rem;letter-spacing:.12em;
+  color:var(--gold-lt);text-align:center;line-height:42px;
+  margin-bottom:10px;overflow-x:auto;white-space:nowrap;padding:0 8px;
+}
+.anag-controls{display:flex;gap:8px;justify-content:center;margin-bottom:12px;}
+.anag-ctrl{
+  background:transparent;border:1px solid rgba(201,168,76,.4);
+  color:var(--fog);font-family:'Oswald',sans-serif;font-size:.6rem;letter-spacing:.1em;
+  padding:6px 14px;cursor:pointer;border-radius:2px;
+}
+.anag-ctrl:active{border-color:var(--gold);color:var(--gold);}
+.anag-keys{
+  display:grid;grid-template-columns:repeat(7,1fr);gap:5px;
+}
+.anag-key{
+  aspect-ratio:1;border:1px solid rgba(201,168,76,.25);
+  background:rgba(201,168,76,.06);
+  font-family:'Playfair Display',serif;font-size:1.05rem;
+  color:var(--parch);cursor:pointer;border-radius:2px;
+  display:flex;align-items:center;justify-content:center;
+}
+.anag-key:active{background:var(--gold);color:var(--ink);}
+
+#victorySection{
+  text-align:center;padding:30px 18px 50px;
+  animation:victoryFade 1.2s ease;
+}
+@keyframes victoryFade{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.victory-crest{
+  font-size:4rem;color:var(--gold);
+  animation:crestPulse 2.4s ease-in-out infinite;
+}
+@keyframes crestPulse{0%,100%{transform:scale(1);opacity:.85;}50%{transform:scale(1.12);opacity:1;}}
+.victory-title{
+  font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;
+  color:var(--gold-lt);letter-spacing:.08em;margin:8px 0 4px;
+}
+.victory-sub{
+  font-family:'Oswald',sans-serif;font-size:.62rem;letter-spacing:.22em;
+  color:var(--crimson);margin-bottom:24px;
+}
+.victory-body{
+  font-family:'Playfair Display',serif;font-size:1rem;line-height:1.6;
+  color:var(--parch);max-width:440px;margin:0 auto 24px;
+}
+.victory-foot{
+  font-family:'Playfair Display',serif;font-style:italic;font-size:.8rem;
+  color:var(--fog);max-width:400px;margin:0 auto;
+}
 .s-card{
   border:1px solid rgba(201,168,76,.25);padding:14px;cursor:pointer;
   background:rgba(255,255,255,.02);transition:all .15s;text-align:left;
@@ -447,6 +572,49 @@ body{
   color:var(--fog);font-size:.78rem;
 }
 
+/* Case File grid (replaces board image) */
+.cf-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;
+  padding:10px;
+}
+.cf-card{
+  position:relative;aspect-ratio:3/4;
+  border:1px solid rgba(201,168,76,.18);
+  background:#120a05;
+  overflow:hidden;
+  border-radius:2px;
+  display:flex;flex-direction:column;
+}
+.cf-card.cf-locked{
+  align-items:center;justify-content:center;
+  background:repeating-linear-gradient(45deg,#0e0703,#0e0703 6px,#140a04 6px,#140a04 12px);
+}
+.cf-card.cf-locked .cf-lock-big{
+  font-size:1.1rem;opacity:.55;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.7));
+}
+.cf-card.cf-open{cursor:pointer;}
+.cf-card.cf-open:active{border-color:rgba(201,168,76,.6);}
+.cf-card-label{
+  background:rgba(8,4,2,.92);
+  padding:3px 2px;
+  font-family:'Oswald',sans-serif;font-size:.4rem;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--gold);
+  text-align:center;line-height:1.1;
+  position:relative;z-index:2;
+}
+.cf-card-img{
+  flex:1;width:100%;min-height:0;
+  object-fit:cover;display:block;
+}
+.cf-card-augusta{
+  grid-column:1 / -1;aspect-ratio:auto;
+  min-height:110px;
+}
+.cf-card-augusta .cf-card-label{
+  font-size:.55rem;padding:8px 10px;
+}
+
 /* Coord */
 #coordLoginView{
   min-height:100dvh;flex-direction:column;
@@ -467,9 +635,14 @@ body{
   text-transform:uppercase;color:var(--gold);
   border-bottom:1px solid rgba(201,168,76,.18);padding-bottom:5px;margin:16px 0 8px;
 }
-.c-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);}
+.c-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);flex-wrap:wrap;}
 .c-tname{font-family:'Oswald',sans-serif;font-size:.7rem;letter-spacing:.06em;min-width:60px;}
 .c-dots{display:flex;gap:4px;flex:1;}
+.c-codes{display:flex;gap:8px;flex-wrap:wrap;width:100%;padding:4px 0 0;font-family:'Oswald',sans-serif;font-size:.6rem;letter-spacing:.04em;color:var(--fog);}
+.c-code b{color:var(--gold);font-weight:600;letter-spacing:.08em;}
+.c-code.done{opacity:.4;}
+.c-code.done b{color:var(--fog);text-decoration:line-through;}
+.c-code.cur b{color:var(--crimson);}
 .c-dot{
   width:24px;height:24px;font-family:'Oswald',sans-serif;font-size:.58rem;
   display:flex;align-items:center;justify-content:center;
@@ -477,6 +650,8 @@ body{
 }
 .c-dot.done{background:var(--gold);color:var(--ink);border-color:var(--gold);}
 .c-dot.cur{border-color:var(--crimson);color:var(--crimson);}
+.c-dot{cursor:pointer;}
+.c-dot.gmok{background:#3a8a4c;color:#fff;border-color:#3a8a4c;}
 .ak-table{width:100%;border-collapse:collapse;font-size:.72rem;}
 .ak-table td{padding:5px 6px;border-bottom:1px solid rgba(255,255,255,.04);}
 .ak-table td:first-child{color:var(--fog);font-family:'Oswald',sans-serif;font-size:.6rem;}
@@ -504,6 +679,148 @@ body{
 .btn-primary-dark:active{opacity:.85;}
 .btn-warn{background:transparent;color:var(--crimson);border:1px solid rgba(168,32,32,.4);font-family:'Oswald',sans-serif;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;padding:10px 18px;cursor:pointer;-webkit-appearance:none;border-radius:0;}
 .c-ctrl{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;}
+
+/* ════════════════════════════════
+   RULES OVERLAY (rich version)
+════════════════════════════════ */
+#rulesOverlay{background:#0d0805 !important;padding:0 !important;}
+.rules-wrap{max-width:560px;margin:0 auto;padding:0 0 60px;}
+
+.rules-topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;border-bottom:1px solid rgba(201,168,76,.18);
+  position:sticky;top:0;background:#0d0805;z-index:2;
+}
+.rules-topbar-title{
+  font-family:'Oswald',sans-serif;font-size:.72rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:8px;
+}
+.rules-back-btn{
+  font-family:'Oswald',sans-serif;font-size:.6rem;letter-spacing:.14em;
+  text-transform:uppercase;padding:8px 14px;
+  border:1px solid rgba(201,168,76,.35);background:transparent;
+  color:var(--parch);cursor:pointer;-webkit-appearance:none;
+  border-radius:0;
+}
+.rules-back-btn:active{background:rgba(255,255,255,.05);}
+
+.rules-subheader{padding:32px 22px 24px;text-align:center;}
+.rules-place{
+  font-family:'Oswald',sans-serif;font-size:.6rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--fog);line-height:1.8;margin-bottom:18px;
+}
+.rules-bigtitle{
+  font-family:'Playfair Display',serif;font-weight:700;
+  font-size:1.55rem;color:var(--parch);letter-spacing:.02em;line-height:1.15;
+}
+.rules-hrule{
+  border:none;border-top:1px solid rgba(201,168,76,.2);
+  margin:22px auto 0;max-width:85%;
+}
+
+.rules-section{
+  border:1px solid rgba(201,168,76,.15);background:rgba(255,255,255,.012);
+  margin:14px 16px;padding:20px 18px;
+}
+.rules-section-critical{
+  border:1px solid var(--blood);
+  background:rgba(122,21,21,.05);
+}
+.rules-section-title{
+  font-family:'Oswald',sans-serif;font-size:.7rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gold);
+  border-bottom:1px solid rgba(201,168,76,.22);
+  padding-bottom:10px;margin-bottom:18px;
+  display:flex;align-items:center;gap:8px;
+}
+.rules-section-title-critical{
+  color:#d05050;
+  border-bottom-color:rgba(208,80,80,.35);
+}
+
+/* Numbered steps */
+.rules-steps{display:flex;flex-direction:column;gap:14px;}
+.rules-step{display:flex;align-items:flex-start;gap:14px;}
+.rules-step-num{
+  flex-shrink:0;width:32px;height:32px;
+  border:1px solid var(--blood);color:#d05050;
+  font-family:'Oswald',sans-serif;font-size:.78rem;
+  display:flex;align-items:center;justify-content:center;
+  background:transparent;
+}
+.rules-step-text{
+  font-family:'Playfair Display',serif;font-size:.92rem;
+  line-height:1.6;color:var(--cream);padding-top:5px;
+}
+
+/* Role cards */
+.rules-roles{display:flex;flex-direction:column;gap:10px;}
+.rules-role-card{
+  border:1px solid rgba(201,168,76,.15);
+  padding:18px 14px;text-align:center;
+}
+.rules-role-icon{font-size:1.5rem;margin-bottom:8px;line-height:1;}
+.rules-role-name{
+  font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:8px;
+}
+.rules-role-desc{
+  font-family:'Playfair Display',serif;font-size:.86rem;
+  color:var(--fog);line-height:1.5;
+}
+.rules-role-note{
+  margin-top:18px;
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:.86rem;color:var(--fog);line-height:1.7;
+}
+
+/* Plain text section */
+.rules-text p{
+  font-family:'Playfair Display',serif;font-size:.92rem;
+  line-height:1.7;color:var(--cream);margin-bottom:14px;
+}
+.rules-text p:last-child{margin-bottom:0;}
+
+/* Detective cards */
+.rules-det-card{
+  display:flex;align-items:center;gap:14px;
+  border:1px solid rgba(201,168,76,.15);
+  padding:14px 16px;margin-bottom:10px;
+}
+.rules-det-card:last-child{margin-bottom:0;}
+.rules-det-icon{font-size:1.5rem;line-height:1;flex-shrink:0;}
+.rules-det-name{
+  font-family:'Playfair Display',serif;font-weight:700;
+  font-size:.98rem;color:var(--parch);
+}
+.rules-det-role{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:.78rem;color:var(--fog);margin-top:3px;
+}
+
+/* Bullet list */
+.rules-bullets{list-style:none;padding:0;margin:0;}
+.rules-bullets li{
+  position:relative;padding-left:20px;
+  font-family:'Playfair Display',serif;font-size:.92rem;
+  line-height:1.7;color:var(--cream);margin-bottom:14px;
+}
+.rules-bullets li:last-child{margin-bottom:0;}
+.rules-bullets li::before{
+  content:'';position:absolute;left:0;top:.85em;
+  width:12px;height:1px;background:var(--blood);
+}
+.rules-warn-li{
+  font-family:'Oswald',sans-serif !important;
+  letter-spacing:.06em;text-transform:uppercase;
+  font-size:.82rem !important;line-height:1.5 !important;
+  text-decoration:underline;
+  text-decoration-color:rgba(122,21,21,.7);
+  text-underline-offset:4px;
+  color:var(--parch) !important;
+}
+
 </style>
 </head>
 <body>
@@ -540,19 +857,110 @@ body{
   </div>
 </div>
 
-<!-- ════════ RULES MODAL (hidden, shown as overlay) ════════ -->
+<!-- ════════ RULES MODAL ════════ -->
 <div id="rulesOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;overflow-y:auto;padding:28px 20px;">
-  <div style="max-width:480px;margin:0 auto;">
-    <div style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);text-align:center;margin-bottom:20px;">The Rules</div>
-    <div style="font-size:.88rem;line-height:1.85;color:var(--cream);">
-      <p style="margin-bottom:12px;">You have <strong>105 minutes</strong> to solve the case. Each team follows a unique route of 4 stops through Covent Garden.</p>
-      <p style="margin-bottom:12px;">At each stop, Pfister et Somsois will give you a <strong>starting code</strong> to unlock your first balise. Subsequent codes are generated by the coordinator at the hub.</p>
-      <p style="margin-bottom:12px;">Complete your <strong>photo/video mission</strong>, solve the <strong>riddle</strong>, and collect your <strong>evidence</strong>. You have 20 minutes per stop — unused time goes to your time bank.</p>
-      <p style="margin-bottom:12px;">The <strong>Joker 🇫🇷</strong> translates a riddle into French. One use per game.</p>
-      <p style="margin-bottom:12px;">After all 4 stops, meet at the <strong>Punch &amp; Judy Pub, East Piazza</strong> for the final enigma.</p>
-      <p style="margin-bottom:24px;">Who killed Eleanor Marsh?</p>
+  <div class="rules-wrap">
+
+    <div class="rules-topbar">
+      <div class="rules-topbar-title"><span>📜</span> GAME RULES</div>
+      <button class="rules-back-btn" onclick="document.getElementById('rulesOverlay').style.display='none'">← BACK</button>
     </div>
-    <button class="btn-ghost" style="width:100%" onclick="document.getElementById('rulesOverlay').style.display='none'">CLOSE</button>
+
+    <div class="rules-subheader">
+      <div class="rules-place">SCOTLAND YARD · CRIMINAL INVESTIGATION DEPARTMENT<br>LONDON, 17<sup>TH</sup> FEBRUARY 1894</div>
+      <div class="rules-bigtitle">THE LAST CURTAIN CALL</div>
+      <hr class="rules-hrule">
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="rules-section">
+      <div class="rules-section-title"><span>⏱</span> HOW IT WORKS</div>
+      <div class="rules-steps">
+        <div class="rules-step"><span class="rules-step-num">1</span><span class="rules-step-text">You have <strong>105 minutes</strong> to solve the case.</span></div>
+        <div class="rules-step"><span class="rules-step-num">2</span><span class="rules-step-text">Your team will visit <strong>4 locations</strong> across London. Use your phones to find your way, or ask passers-by.</span></div>
+        <div class="rules-step"><span class="rules-step-num">3</span><span class="rules-step-text"><strong>Detective Pfister and Detective Somsois</strong> will give you the code that unlocks your first destination and your first challenges.</span></div>
+        <div class="rules-step"><span class="rules-step-num">4</span><span class="rules-step-text">Once on site, solve the riddle and complete the challenge.</span></div>
+        <div class="rules-step"><span class="rules-step-num">5</span><span class="rules-step-text">Roles rotate and you start again.</span></div>
+        <div class="rules-step"><span class="rules-step-num">6</span><span class="rules-step-text">Each team unlocks <strong>different pieces of evidence</strong>. At the final challenge, all teams <strong>pool their clues together</strong>: only as a group can you solve the case. / Chaque équipe débloque des indices différents, mis en commun à la fin : c'est un travail de groupe.</span></div>
+        <div class="rules-step"><span class="rules-step-num">7</span><span class="rules-step-text">The final challenge takes place at <strong>Covent Garden</strong>.</span></div>
+      </div>
+    </div>
+
+    <!-- ROLES -->
+    <div class="rules-section">
+      <div class="rules-section-title"><span>👥</span> THE ROLES · THEY ROTATE AT EACH STOP</div>
+      <div class="rules-roles">
+        <div class="rules-role-card">
+          <div class="rules-role-icon">🔍</div>
+          <div class="rules-role-name">THE INSPECTOR</div>
+          <div class="rules-role-desc">Leads the group, reads the riddles, makes the decisions.</div>
+        </div>
+        <div class="rules-role-card">
+          <div class="rules-role-icon">📜</div>
+          <div class="rules-role-name">THE SCRIBE</div>
+          <div class="rules-role-desc">Writes down the clues, types in the answers.</div>
+        </div>
+        <div class="rules-role-card">
+          <div class="rules-role-icon">📸</div>
+          <div class="rules-role-name">THE FIELD AGENT</div>
+          <div class="rules-role-desc">Handles all photo and video challenges.</div>
+        </div>
+      </div>
+      <div class="rules-role-note">For the first two stops, roles must rotate: each member takes a different one. For the last two stops, it is up to you to decide who does what.</div>
+    </div>
+
+    <!-- FRENCH JOKER -->
+    <div class="rules-section">
+      <div class="rules-section-title"><span>🇫🇷</span> THE FRENCH JOKER</div>
+      <div class="rules-text">
+        <p>A riddle stumping you? You have <strong>one single joker for the entire game</strong>: it displays <strong>the riddle of your choice in French</strong>.</p>
+        <p>Think carefully before using it: once spent on a riddle, it cannot be used elsewhere.</p>
+      </div>
+    </div>
+
+    <!-- DETECTIVES -->
+    <div class="rules-section">
+      <div class="rules-section-title"><span>🎩</span> THE SCOTLAND YARD DETECTIVES</div>
+      <div class="rules-det-card">
+        <div class="rules-det-icon">🎩</div>
+        <div>
+          <div class="rules-det-name">Detective Pfister</div>
+          <div class="rules-det-role">Scotland Yard · Criminal Investigation Department</div>
+        </div>
+      </div>
+      <div class="rules-det-card">
+        <div class="rules-det-icon">🎩</div>
+        <div>
+          <div class="rules-det-name">Detective Somsois</div>
+          <div class="rules-det-role">Scotland Yard · Criminal Investigation Department</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRITICAL : GAME PHONE -->
+    <div class="rules-section rules-section-critical">
+      <div class="rules-section-title rules-section-title-critical"><span>⚠</span> CRITICAL · YOUR GAME PHONE</div>
+      <ul class="rules-bullets">
+        <li><strong>ALWAYS keep the same phone and the same browser</strong> from the very start to the very end of the game.</li>
+        <li>Your progress is saved automatically on this phone. <strong>If the phone dies (battery, etc.), do not panic:</strong> turn it back on, reopen the game link, everything will come back.</li>
+        <li><strong>NEVER clear your history, cache or browser data:</strong> you would lose all your progress.</li>
+        <li>Do not use private browsing.</li>
+        <li>Warning: the countdown timer keeps running even if the phone is off. Real time does not stop.</li>
+      </ul>
+    </div>
+
+    <!-- GOOD TO KNOW -->
+    <div class="rules-section">
+      <div class="rules-section-title"><span>⚠</span> GOOD TO KNOW</div>
+      <ul class="rules-bullets">
+        <li class="rules-warn-li">Be very careful when crossing the street.</li>
+        <li class="rules-warn-li">Watch your bags and secure your phones when holding them.</li>
+        <li class="rules-warn-li">Wrist strap is mandatory.</li>
+        <li>Two phones to use: <strong>one for the game</strong>, the other for photo and video challenges. The 3<sup>rd</sup> stays in your bag in case of trouble.</li>
+        <li>Riddle answers are always <strong>in English</strong>, in a single word.</li>
+      </ul>
+    </div>
+
   </div>
 </div>
 
@@ -593,24 +1001,64 @@ body{
     <button class="btn-back" onclick="G.showTeamSelect()">← ÉQUIPES</button>
   </div>
   <div class="finale-wrap">
-    <div id="finaleAnsSection">
+    <div id="finaleOrdealSection">
+      <span class="finale-orn">✦ · · · ✦</span>
+      <div class="finale-title">The Common Ordeal</div>
+      <div class="finale-sub">L'épreuve commune · Punch &amp; Judy</div>
+
+      <div class="ordeal-letters" id="ordealLetters"></div>
+
+      <div class="ordeal-mission" id="ordealMissionEn">
+        <div class="ordeal-mission-label">YOUR MISSION</div>
+        <p>You hold the letters <span id="ordLettersInlineEn"></span>. You must capture them in photos:</p>
+        <ul>
+          <li>One letter formed <b>with your bodies</b> (one or more team members).</li>
+          <li>The other letter formed by <b>a passer-by</b>, using their hands, with <b>one or more of your team members visible next to them</b> in the photo.</li>
+        </ul>
+        <p><b>One letter per phone:</b> the two photos must be taken on <b>two different phones</b>. Since the game phone cannot take photos, another phone is <span class="ord-badge">allowed</span> for this challenge.</p>
+        <p>Then join the other teams at the meeting point. Once all six teams have gathered, your photos will be checked.</p>
+        <p>All six teams together hold <b>12 letters</b>. Put end to end, they spell <b>a single word</b>: that is the final word, it is up to you to find it.</p>
+        <p class="ord-final">When your photos are approved (and only then), type that word in the answer box.</p>
+      </div>
+
+      <label class="ans-label-p" style="color:var(--fog)">THE WORD</label>
+      <input id="ordealInput" class="ans-input-p" type="text" placeholder="12 LETTERS"
+             autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false"
+             onkeydown="if(event.key==='Enter') G.checkOrdeal()">
+      <div class="ans-fb-p" id="ordealFb" style="color:var(--fog)"></div>
+      <button class="next-stop-btn" onclick="G.checkOrdeal()">SUBMIT →</button>
+    </div>
+    <div id="finaleAnsSection" style="display:none">
       <span class="finale-orn">✦ · · · ✦</span>
       <div class="finale-title">The Last Curtain Call</div>
       <div class="finale-sub">Punch &amp; Judy · East Piazza, Covent Garden</div>
       <div class="finale-clue" id="finaleClueText"></div>
-      <label class="ans-label-p" style="color:var(--fog)">FINAL ANSWER / RÉPONSE FINALE</label>
+      <button class="next-stop-btn" onclick="G.goAccuse()">CONTINUE →</button>
+    </div>
+    <div id="finaleVerdictSection" style="display:none">
+      <span class="finale-orn">✦ · · · ✦</span>
+      <div class="finale-title" style="margin-bottom:6px">Name the killer</div>
+      <div class="finale-sub">Study the suspects. Rearrange the letters. Accuse.</div>
+
+      <div class="suspect-grid" id="suspectGrid"></div>
+
+      <div class="anag-box">
+        <div class="anag-label">SCRATCH PAD / BROUILLON</div>
+        <div class="anag-output" id="anagOutput"></div>
+        <div class="anag-controls">
+          <button class="anag-ctrl" onclick="G.anagBack()">⌫ DELETE</button>
+          <button class="anag-ctrl" onclick="G.anagClear()">CLEAR ALL</button>
+        </div>
+        <div class="anag-keys" id="anagKeys"></div>
+      </div>
+
+      <label class="ans-label-p" style="color:var(--fog)">YOUR ACCUSATION</label>
       <input id="finaleInput" class="ans-input-p" type="text" placeholder="THE KILLER'S NAME"
              autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false"
              onkeydown="if(event.key==='Enter') G.checkFinale()">
       <div class="ans-fb-p" id="finaleFb" style="color:var(--fog)"></div>
-      <button class="next-stop-btn" onclick="G.checkFinale()">ACCUSE →</button>
-    </div>
-    <div id="finaleVerdictSection" style="display:none">
-      <span class="finale-orn">✦ · · · ✦</span>
-      <div class="finale-title" style="margin-bottom:20px">Who killed Eleanor Marsh?</div>
-      <div class="suspect-grid" id="suspectGrid"></div>
-      <button class="accuse-btn" id="accuseBtn">⚖ I ACCUSE — JE DÉNONCE</button>
-      <div class="verdict-box" id="verdictBox"></div>
+      <button class="next-stop-btn" onclick="G.checkFinale()">⚖ ACCUSE</button>
+      <div class="verdict-box" id="verdictBox" style="display:none"></div>
     </div>
   </div>
 </section>
@@ -639,7 +1087,18 @@ body{
     <div class="c-section">COMMON CODES</div>
     <table class="ak-table">
       <tr><td>Stop 1 unlock code</td><td>1894</td></tr>
+      <tr><td>Hub unlock code</td><td>2026</td></tr>
+      <tr><td>Common ordeal word</td><td>CRIMEHUNTERS</td></tr>
       <tr><td>Final anagram</td><td>VICTOR ASHCOMBE</td></tr>
+    </table>
+    <div class="c-section">CRIMEHUNTERS LETTERS</div>
+    <table class="ak-table">
+      <tr><td>Éq.1 Rouge</td><td>C (1) + U (7)</td></tr>
+      <tr><td>Éq.2 Orange</td><td>R (2) + N (8)</td></tr>
+      <tr><td>Éq.3 Or</td><td>I (3) + T (9)</td></tr>
+      <tr><td>Éq.4 Vert</td><td>M (4) + E (10)</td></tr>
+      <tr><td>Éq.5 Bleu</td><td>E (5) + R (11)</td></tr>
+      <tr><td>Éq.6 Violet</td><td>H (6) + S (12)</td></tr>
     </table>
     <div class="c-section">CULPRIT</div>
     <div class="c-culprit">VICTOR ASHCOMBE — Stole the play, stole the life.</div>
@@ -664,37 +1123,56 @@ const STOP1_CODE = "1894";
 const STOP_SECS = 20 * 60;
 const HUB_CODE = "2026";
 const BOARD_URL = "https://fsomsois-source.github.io/Last-Curtain-Call/board.webp";
+const COORD_PASS = "teamlight";
+const SAVE_KEY = "curtaincall_save_v1";
+
+// Codes déterministes par (équipe, balise). Calculés pareil côté coord et côté équipe.
+// Balise 0 = code commun 1894. Balises 1, 2, 3 = codes uniques générés par les coords.
+const STOP_CODES = {
+  '1-1':'4271','1-2':'8392','1-3':'5613',
+  '2-1':'7184','2-2':'3925','2-3':'6048',
+  '3-1':'9152','3-2':'5836','3-3':'2479',
+  '4-1':'6307','4-2':'8541','4-3':'1962',
+  '5-1':'4729','5-2':'7183','5-3':'8504',
+  '6-1':'3618','6-2':'5092','6-3':'9347',
+};
+function computeStopCode(teamId, si){
+  if(si===0) return STOP1_CODE;
+  return STOP_CODES[teamId+'-'+si] || '';
+}
+
+const SUSPECTS_URL = "https://fsomsois-source.github.io/Last-Curtain-Call/doc_04_suspects_board.webp";
 
 const DOC_URLS = {
   0:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_00_augusta_thorne.webp",
-  1:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_01_blackwell_receipt.webp",
-  2:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_02_police_statement.webp",
-  3:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_08_lyceum_chronicle.webp",
-  4:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_04_suspects_board.webp",
+  1:"https://fsomsois-source.github.io/Last-Curtain-Call/receipt.png",
+  2:"https://fsomsois-source.github.io/Last-Curtain-Call/Note.png",
+  3:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_02_police_statement.webp",
+  4:"https://fsomsois-source.github.io/Last-Curtain-Call/Affiche.png",
   5:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_05_somerset_contract.webp",
   6:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_06_ravensdale_letter.webp",
   7:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_07_eleanor_lily.webp",
   8:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_08_lyceum_chronicle.webp",
 };
 const BOARD_ZONES = [
-  { sid:7, l:  0,   t:  0,   w:33,   h:35 },
-  { sid:4, l: 33,   t:  0,   w:34,   h:56 },
-  { sid:5, l: 67,   t:  0,   w:33,   h:56 },
-  { sid:8, l:  0,   t: 33,   w:33,   h:36 },
-  { sid:3, l:  0,   t: 67,   w:33,   h:33 },
-  { sid:2, l: 33,   t: 54,   w:34,   h:24 },
-  { sid:6, l: 67,   t: 54,   w:33,   h:24 },
-  { sid:1, l: 33,   t: 77,   w:34,   h:23 },
-  { sid:0, l: 67,   t: 77,   w:33,   h:23 },
+  { sid:7, l: 0,  t: 0,  w:27, h:37 },
+  { sid:4, l:27,  t: 0,  w:40, h:55 },
+  { sid:5, l:67,  t: 0,  w:33, h:55 },
+  { sid:8, l: 0,  t:37,  w:27, h:35 },
+  { sid:0, l: 0,  t:72,  w:27, h:28 },
+  { sid:3, l:27,  t:55,  w:40, h:22 },
+  { sid:2, l:67,  t:55,  w:33, h:22 },
+  { sid:1, l:27,  t:77,  w:40, h:23 },
+  { sid:6, l:67,  t:77,  w:33, h:23 },
 ];
 
 const ROUTES = {
-  1:{name:"Rouge",  en:"Red",    color:"#c0392b", stops:[1,2,5,6], strong:false},
-  2:{name:"Orange", en:"Orange", color:"#d35400", stops:[2,3,6,7], strong:true },
-  3:{name:"Or",     en:"Gold",   color:"#c9a84c", stops:[3,4,7,8], strong:true },
-  4:{name:"Verte",  en:"Green",  color:"#27ae60", stops:[1,4,5,8], strong:false},
-  5:{name:"Bleue",  en:"Blue",   color:"#2980b9", stops:[2,5,6,8], strong:false},
-  6:{name:"Violette",en:"Purple",color:"#8e44ad", stops:[1,3,4,7], strong:true },
+  1:{name:"Rouge",  en:"Red",    color:"#c0392b", stops:[3,4,2,5], strong:false},
+  2:{name:"Orange", en:"Orange", color:"#d35400", stops:[1,5,7,4], strong:true },
+  3:{name:"Or",     en:"Gold",   color:"#c9a84c", stops:[8,7,6,3], strong:true },
+  4:{name:"Verte",  en:"Green",  color:"#27ae60", stops:[6,1,5,2], strong:false},
+  5:{name:"Bleue",  en:"Blue",   color:"#2980b9", stops:[4,3,1,8], strong:false},
+  6:{name:"Violette",en:"Purple",color:"#8e44ad", stops:[7,2,8,6], strong:true },
 };
 
 const CLUES = {
@@ -707,17 +1185,17 @@ const CLUES = {
     riddle_fr:`Avant chaque entree, je m'arrete devant l'eglise des comediens. Je leve les yeux vers le visage qui marque le temps : sa couleur me dit l'humeur du soir. Puis je compte mes gardiens de pierre — autant qu'il en faut pour soutenir une scene. La couleur, puis le nombre : c'est ainsi qu'on entre en jeu.`,
     attr:"— Eleanor Marsh, journal, 12 fevrier 1894",
     answer:["BLUE4"],
-    hint_en:"Look up at the clock on the church facade. What colour is its face? Then count the stone columns holding up the portico.",
-    hint_fr:"Levez les yeux vers l'horloge sur la facade de l'eglise. De quelle couleur est son cadran ? Puis comptez les colonnes de pierre qui soutiennent le portique.",
-    img:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_01_blackwell_receipt.webp",
+    hint_en:"The face of time gives you the colour. And how many shafts are there...",
+    hint_fr:"Le visage du temps vous donne la couleur. Et combien de fûts comptez-vous...",
+    img:"https://fsomsois-source.github.io/Last-Curtain-Call/receipt.png",
     ev_en:`H. Blackwell & Co., Apothecaries, 27 Drury Lane.
 London, 15 February 1894.
-Sold to: Corbin-Thomas Vec.
+Sold to: Ambrose V. Chicot.
 1 bottle Laudanum. 2/6.
 Paid Cash.`,
     ev_fr:`H. Blackwell & Co., Apothicaires, 27 Drury Lane.
 Londres, 15 fevrier 1894.
-Vendu a : Corbin-Thomas Vec.
+Vendu a : Ambrose V. Chicot.
 1 flacon de Laudanum. 2/6.
 Paye comptant.`,
   },
@@ -726,45 +1204,39 @@ Paye comptant.`,
     title:"The Stage of Shadows",
     mission_en:"Ask a passer-by on video: what is the name of the famous ghost that haunts this theatre? Film their answer.",
     mission_fr:"Demandez a un passant en video : quel est le nom du celebre fantome qui hante ce theatre ? Filmez sa reponse.",
-    riddle_en:`The stage manager's register, 17 February 1894.
+    riddle_en:`Artists' entrance log, 17 February 1894.
 
-Artists' entrance log — evening performance:
+17:30   M.E.    in
+18:15   Q.A.    in
+19:00   C.E.    in
+19:30   A.V.    in
 
-18:00  E. Marsh  IN
-18:15  A. Quill  IN
-19:00  E. Crale  IN
-19:30  V. Ashcombe  IN
-19:30  Last visitor received by Miss Marsh
+Who did Eleanor receive second?`,
+    riddle_fr:`Journal des entrees des artistes, 17 fevrier 1894.
 
-At what time did Eleanor receive her last visitor?`,
-    riddle_fr:`Registre du stage manager, 17 fevrier 1894.
+17:30   M.E.    entree
+18:15   Q.A.    entree
+19:00   C.E.    entree
+19:30   A.V.    entree
 
-Journal des entrees — representation du soir :
-
-18:00  E. Marsh  ENTREE
-18:15  A. Quill  ENTREE
-19:00  E. Crale  ENTREE
-19:30  V. Ashcombe  ENTREE
-19:30  Derniere visite recue par Miss Marsh
-
-A quelle heure Eleanor a-t-elle recu sa derniere visite ?`,
+Qui Eleanor a-t-elle recu en second ?`,
     attr:"— Inspector J.H. Ellison, Scotland Yard",
-    answer:["HALF PAST SEVEN","MAN IN GREY","MAN IN GRAY","THE MAN IN GREY"],
-    hint_en:"Read the log carefully. The last entry before Eleanor's door was visited — what time does it show? Write it in words: HALF PAST SEVEN. For the ghost: he is described by his colour.",
-    hint_fr:"Lisez le registre attentivement. La derniere entree avant la visite a Eleanor — quelle heure indique-t-elle ? En toutes lettres : HALF PAST SEVEN. Pour le fantome : il est decrit par sa couleur.",
-    img:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_02_police_statement.webp",
-    ev_en:`Metropolitan Police — Witness Statement.
-Station: Scotland Yard. Date: 15 February 1894.
-Ref No. 47/94.
-Witness: Peter Davenport, Proprietor, The King's Mask Public House.
+    answer:["CRALE","EDMUND CRALE","CRALE EDMUND","E. CRALE","E CRALE","C.E.","CE","C E"],
+    hint_en:"Eleanor doesn't visit herself. Count from the first real visitor. The initials are reversed: surname first, then first name. You'll need to know who is who.",
+    hint_fr:"Eleanor ne se rend pas visite a elle-meme. Comptez a partir du premier vrai visiteur. Les initiales sont inversees : nom d'abord, puis prenom. Il vous faut savoir qui est qui.",
+    img:"https://fsomsois-source.github.io/Last-Curtain-Call/Note.png",
+    ev_en:`Handwritten note, recovered from Eleanor Marsh's dressing room, Theatre Royal, Drury Lane.
+Same handwriting as her letter to Lily Marsh.
 
-On the evening of 14 February 1894, a male person entered my establishment. He was wearing a top hat and was completely drunk. He began shouting that "she wanted to steal his play" and that "he would take his play back." Stamp: CASE CLOSED. — Inspector J.H. Ellison.`,
-    ev_fr:`Police Metropolitaine — Deposition.
-Station : Scotland Yard. Date : 15 fevrier 1894.
-Ref No. 47/94.
-Temoin : Peter Davenport, proprietaire, King's Mask Public House.
+"It is very important that I see you about my play before the premiere."
 
-Le soir du 14 fevrier 1894, un homme en haut-de-forme, completement ivre, est entre dans mon etablissement. Il hurlait qu'elle voulait lui voler sa piece et qu'il reprendrait sa piece. Tampon : AFFAIRE CLASSEE. — Inspecteur J.H. Ellison.`,
+The word "my" is crossed out, then written again. Eleanor knew. She had summoned Ashcombe to her dressing room on the night of 17 February 1894 — before the curtain rose. He came. He brought the laudanum.`,
+    ev_fr:`Note manuscrite, retrouvee dans la loge d'Eleanor Marsh, Theatre Royal, Drury Lane.
+Meme ecriture que sa lettre a Lily Marsh.
+
+"Il est tres important que je te voie au sujet de ma piece avant la premiere."
+
+Le mot "ma" est barre, puis reecrit. Eleanor savait. Elle avait convoque Ashcombe dans sa loge le soir du 17 fevrier 1894, avant le lever de rideau. Il est venu. Il a apporte le laudanum.`,
   },
   3:{
     loc:"THE NOBLE COLLECTION — 26 NEAL STREET",
@@ -815,25 +1287,51 @@ Demandez a un passant en video : quelle piece de Shakespeare parle d'une femme r
     answer:["THE TAMING OF THE SHREW","TAMING OF THE SHREW"],
     hint_en:"Ask someone near the Shakespeare statue. The play involves a man who 'tames' a strong-willed woman. It begins with THE TAMING OF...",
     hint_fr:"Demandez a quelqu'un pres de la statue de Shakespeare. La piece parle d'un homme qui 'apprivoise' une femme au caractere fort. Elle commence par THE TAMING OF...",
-    img:"https://fsomsois-source.github.io/Last-Curtain-Call/doc_04_suspects_board.webp",
-    ev_en:`Case Notes — Location 4: Leicester Square.
-Suspects:
+    img:"https://fsomsois-source.github.io/Last-Curtain-Call/Affiche.png",
+    ev_en:`Theatre poster recovered from Drury Lane, February 1894.
 
-Victor Ashcombe — Dramatist. Stated author of The Lady of the Mask.
-Augusta Thorne — Wife of the Manager. Former leading actress, replaced by Eleanor.
-Alice Quill — Stage Double. Understudy for Eleanor's role.
-Edmund Crale — Theatre Manager, Drury Lane. Eleanor under contract.
+THEATRE ROYAL, DRURY LANE
+Under the Management of Mr. Edmund Crale
+By Royal Licence
 
-Notes: All four present at the theatre on the night in question.`,
-    ev_fr:`Notes d'enquete — Lieu 4 : Leicester Square.
-Suspects :
+THE LADY OF THE MASK
+A New and Original Drama in Four Acts
 
-Victor Ashcombe — Dramaturge. Auteur declare de The Lady of the Mask.
-Augusta Thorne — Epouse du directeur. Ex-vedette, remplacee par Eleanor.
-Alice Quill — Doublure. Remplacante du role d'Eleanor.
-Edmund Crale — Directeur du theatre, Drury Lane. Eleanor sous contrat.
+Written by VICTOR ASHCOMBE
+From an original idea by E. Marsh.
 
-Notes : Les quatre etaient presents au theatre le soir du crime.`,
+The Principal Characters:
+Lady Isabella . . . Miss Eleanor Marsh
+Sir Reginald . . . Mr. Edmund Crale
+Margaret, the maid . . . Miss Alice Quill
+Lady Hartfield . . . Mrs. Augusta Thorne
+
+Grand Opening Night, Saturday 17th February 1894.
+Curtain rises at half past seven.
+
+Note: Eleanor Marsh is the true author. Her name appears only as 'an original idea' — in small print, beneath Ashcombe's. The fraud is on the poster itself, for all of London to see.`,
+    ev_fr:`Affiche de theatre retrouvee a Drury Lane, fevrier 1894.
+
+THEATRE ROYAL, DRURY LANE
+Sous la direction de M. Edmund Crale
+Par licence royale
+
+THE LADY OF THE MASK
+Un drame nouveau et original en quatre actes
+
+Ecrit par VICTOR ASHCOMBE
+D'apres une idee originale d'E. Marsh.
+
+Personnages principaux :
+Lady Isabella . . . Miss Eleanor Marsh
+Sir Reginald . . . M. Edmund Crale
+Margaret, la femme de chambre . . . Miss Alice Quill
+Lady Hartfield . . . Mme Augusta Thorne
+
+Premiere : samedi 17 fevrier 1894.
+Lever de rideau a sept heures et demie.
+
+Note : Eleanor Marsh est la veritable auteure. Son nom n'apparait qu'en petits caracteres sous celui d'Ashcombe, comme simple "idee originale". La fraude est imprimee sur l'affiche meme, sous les yeux de tout Londres.`,
   },
   5:{
     loc:"SOMERSET HOUSE — THE STRAND",
@@ -1012,17 +1510,22 @@ Sir Henry Irving et sa compagnie du Lyceum poursuivent leur celebre tournee amer
   },
 };
 
+const FINAL_WORD = "CRIMEHUNTERS";
+const TEAM_LETTERS = {
+  1: [{letter:'C', pos:1}, {letter:'U', pos:7}],
+  2: [{letter:'R', pos:2}, {letter:'N', pos:8}],
+  3: [{letter:'I', pos:3}, {letter:'T', pos:9}],
+  4: [{letter:'M', pos:4}, {letter:'E', pos:10}],
+  5: [{letter:'E', pos:5}, {letter:'R', pos:11}],
+  6: [{letter:'H', pos:6}, {letter:'S', pos:12}],
+};
+
 const FINAL_RIDDLE = `Augusta Thorne found Eleanor dying in her dressing room.
 Searching Ashcombe's coat for help, she found a torn letter —
 left by majordomo J. Witcombe, dated 3 March 1894.
 
 Eleanor's last written word — in the margin, twice:
 ANAGRAM. ANAGRAM.
-
-Look at the receipt from Stop 1.
-The apothecary's name: CORBIN-THOMAS VEC.
-
-Rearrange every single letter.
 
 — Who killed Eleanor Marsh?`;
 
@@ -1045,7 +1548,7 @@ const SUSPECTS = [
 // STATE
 // ═══════════════════════════════════════
 let S = { teams:{} };
-function mkTeam(){ return {unlocked:[false,false,false,false], solved:[false,false,false,false], jokerUsed:false, timeBank:0}; }
+function mkTeam(){ return {unlocked:[false,false,false,false], solved:[false,false,false,false], jokerUsed:false, timeBank:0, gmCheck:[false,false,false,false]}; }
 function loadState(){
   try{ const r=localStorage.getItem(SAVE_KEY); if(r) S=JSON.parse(r); }catch(e){}
   for(let i=1;i<=6;i++) if(!S.teams[i]) S.teams[i]=mkTeam();
@@ -1076,11 +1579,17 @@ function _renderBank(){
   el.textContent=`${m}:${s.toString().padStart(2,'0')}`;
 }
 function _onTimerEnd(){
-  // Timer ran out — mark as failed but continue
-  alert("⏱ Time's up! Move to the next stop.");
   const team=S.teams[_curTeam];
+  // Si la banque a du temps en réserve, on bascule dessus au lieu de couper
+  if((team.timeBank||0) > 0){
+    const bank=team.timeBank;
+    team.timeBank=0; save(); _renderBank();
+    startTimer(bank);
+    return;
+  }
+  // Vraiment plus de temps : on signale et on continue
+  alert("⏱ Time's up! Move to the next stop.");
   const si=_curTab;
-  // mark unlocked so they can proceed
   if(!team.solved[si]) team.unlocked[si]=true;
   save(); _renderBalise(si);
 }
@@ -1101,6 +1610,12 @@ window.G = {
     if(!url) return;
     const overlay = document.getElementById('docOverlay');
     document.getElementById('docOverlayImg').src = url;
+    overlay.style.display = 'flex';
+  },
+
+  openSuspectsCard(){
+    const overlay = document.getElementById('docOverlay');
+    document.getElementById('docOverlayImg').src = SUSPECTS_URL;
     overlay.style.display = 'flex';
   },
 
@@ -1166,26 +1681,29 @@ window.G = {
 
   useJoker(){
     const team=S.teams[_curTeam]; if(team.jokerUsed)return;
+    const ok=confirm(
+      "🇫🇷 Utiliser le joker de traduction ici ?\n\n"+
+      "Tu ne pourras l'utiliser qu'UNE SEULE FOIS de toute la partie. "+
+      "L'énigme, la mission et l'indice de cette balise s'afficheront en français.\n\n"+
+      "Confirmer ?"
+    );
+    if(!ok) return;
     const route=ROUTES[_curTeam];
     const clueId=route.stops[_curTab];
     const clue=CLUES[clueId];
     team.jokerUsed=true; save();
     const ct=document.getElementById('clueText');
     if(ct) ct.textContent=clue.riddle_fr;
+    const mt=document.getElementById('missionText');
+    if(mt) mt.textContent=clue.mission_fr;
+    const ml=document.getElementById('missionLabel');
+    if(ml) ml.textContent='🎬 MISSION VIDÉO / PHOTO';
+    const cl=document.getElementById('clueLabel');
+    if(cl) cl.textContent='🔍 ÉNIGME';
+    const hb=document.getElementById('hintBox');
+    if(hb) hb.textContent=clue.hint_fr;
     const jb=document.getElementById('jokerBtn');
     if(jb) jb.style.display='none';
-  },
-
-  toggleEvFr(){
-    const et=document.getElementById('evText');
-    if(!et)return;
-    const si=_curTab; const route=ROUTES[_curTeam];
-    const clue=CLUES[route.stops[si]];
-    const isFr=et.dataset.fr==='1';
-    et.textContent=isFr?clue.ev_en:clue.ev_fr;
-    et.dataset.fr=isFr?'0':'1';
-    const btn=document.getElementById('evFrBtn');
-    if(btn) btn.textContent=isFr?'🇫🇷 Voir en français':'🇬🇧 View in English';
   },
 
   nextStop(){
@@ -1220,30 +1738,71 @@ window.G = {
   },
 
   goFinale(){
-    document.getElementById('finaleClueText').innerHTML=
-      FINAL_RIDDLE.replace(/\n/g,'<br>')+
-      '<span class="finale-clue-attr">— Augusta Thorne, 3 March 1894</span>';
-    document.getElementById('finaleAnsSection').style.display='';
+    const letters=TEAM_LETTERS[_curTeam]||[];
+    const lettersHTML=letters.map(l=>`
+      <div class="ord-letter-cell">
+        <div class="ord-letter-char">${l.letter}</div>
+        <div class="ord-letter-pos">${l.pos}</div>
+      </div>`).join('');
+    document.getElementById('ordealLetters').innerHTML=lettersHTML;
+    const inlineHTML=letters.map((l,i)=>
+      (i>0 ? (i===letters.length-1 ? ' and ' : ', ') : '') + `<b class="ord-inline">${l.letter}</b>`
+    ).join('');
+    document.getElementById('ordLettersInlineEn').innerHTML=inlineHTML;
+    document.getElementById('ordealInput').value='';
+    document.getElementById('ordealFb').textContent='';
+    document.getElementById('finaleOrdealSection').style.display='';
+    document.getElementById('finaleAnsSection').style.display='none';
     document.getElementById('finaleVerdictSection').style.display='none';
-    document.getElementById('finaleInput').value='';
-    document.getElementById('finaleFb').textContent='';
     this.showView('finaleView');
   },
+
+  checkOrdeal(){
+    const val=document.getElementById('ordealInput').value.trim().toUpperCase().replace(/\s+/g,'');
+    const fb=document.getElementById('ordealFb');
+    if(val===FINAL_WORD){
+      fb.textContent='✓ The word is spoken. Augusta\'s letter appears...'; fb.className='ans-fb-p fb-ok';
+      setTimeout(()=>{
+        document.getElementById('finaleOrdealSection').style.display='none';
+        document.getElementById('finaleClueText').innerHTML=
+          FINAL_RIDDLE.replace(/\n/g,'<br>')+
+          '<span class="finale-clue-attr">— Augusta Thorne, 3 March 1894</span>';
+        document.getElementById('finaleInput').value='';
+        document.getElementById('finaleFb').textContent='';
+        document.getElementById('finaleAnsSection').style.display='';
+      },900);
+    } else {
+      fb.textContent='✗ Not the word. Check with Detective Pfister and Detective Somsois.'; fb.className='ans-fb-p fb-err';
+      document.getElementById('ordealInput').value='';
+    }
+  },
+
+  goAccuse(){
+    document.getElementById('finaleAnsSection').style.display='none';
+    document.getElementById('finaleVerdictSection').style.display='';
+    document.getElementById('finaleInput').value='';
+    document.getElementById('finaleFb').textContent='';
+    document.getElementById('verdictBox').style.display='none';
+    _anagText='';
+    _renderAnag();
+    _buildAnagKeys();
+    _buildSuspects();
+    window.scrollTo(0,0);
+  },
+
+  anagKey(ch){ _anagText+=ch; _renderAnag(); },
+  anagBack(){ _anagText=_anagText.slice(0,-1); _renderAnag(); },
+  anagClear(){ _anagText=''; _renderAnag(); },
 
   checkFinale(){
     const val=document.getElementById('finaleInput').value.trim().toUpperCase().replace(/\s+/g,' ');
     const ok=["VICTOR ASHCOMBE"].includes(val);
     const fb=document.getElementById('finaleFb');
     if(ok){
-      fb.textContent='✓ Correct. The truth is revealed.'; fb.className='ans-fb-p fb-ok';
       G.revealBoard();
-      setTimeout(()=>{
-        document.getElementById('finaleAnsSection').style.display='none';
-        document.getElementById('finaleVerdictSection').style.display='';
-        _buildSuspects();
-      },900);
+      _showVictory();
     } else {
-      fb.textContent='✗ That is not the name. Try again.'; fb.className='ans-fb-p fb-err';
+      fb.textContent='✗ Scotland Yard is disappointed. Try again.'; fb.className='ans-fb-p fb-err';
       document.getElementById('finaleInput').value='';
     }
   },
@@ -1252,37 +1811,16 @@ window.G = {
     S.finaleRevealed=true; save();
   },
 
-  accuseSuspect(id){
-    const s=SUSPECTS.find(x=>x.id===id); if(!s)return;
-    document.getElementById('suspectGrid').style.display='none';
-    document.getElementById('accuseBtn').style.display='none';
-    const box=document.getElementById('verdictBox');
-    box.style.display='';
-    const col=s.guilty?'#c0392b':'#3a8a4c';
-    const label=s.guilty?'⚖ GUILTY / COUPABLE':'✓ NOT GUILTY / NON COUPABLE';
-    box.innerHTML=`
-      <div class="verdict-label" style="color:${col};border:1px solid ${col};">${label}</div>
-      <div class="verdict-en">${s.verdict_en.replace(/\n/g,'<br>')}</div>
-      <hr class="verdict-divider">
-      <div class="verdict-fr">${s.verdict_fr.replace(/\n/g,'<br>')}</div>
-      ${s.guilty?`<div class="verdict-quote">"He will not take my curtain call from me."<br><span style="font-size:.7rem;color:var(--fog)">— Eleanor Marsh, 1894</span></div>`:''}
-      <div style="text-align:center;margin-top:20px;">
-        <button class="btn-ghost" style="font-size:.6rem;" onclick="G.goFinale()">← Try again</button>
-      </div>
-    `;
-  },
-
   unlockStop(si){
     const inp=document.getElementById('pinInput'); if(!inp)return;
     const val=inp.value.trim().toUpperCase();
     const team=S.teams[_curTeam];
-    const expected = si===0 ? STOP1_CODE : (team['code'+si]||'');
+    const expected = computeStopCode(_curTeam, si);
     const err=document.getElementById('pinErr');
     if(val===expected.toUpperCase()){
       team.unlocked[si]=true; save();
-      const bank=(team.timeBank||0);
-      team.timeBank=0; save(); _renderBank();
-      startTimer(STOP_SECS+bank);
+      startTimer(STOP_SECS);
+      _renderBank();
       _renderBalise(si);
     } else {
       if(err){ err.textContent='Incorrect code.'; setTimeout(()=>{if(err)err.textContent='';},2000); }
@@ -1306,10 +1844,15 @@ window.G = {
   },
 
   coordTest(){
-    if(!confirm('Unlock all stops for Team 1?'))return;
-    const t=S.teams[1];
-    t.unlocked=[true,true,true,true]; t.solved=[true,true,true,true];
-    t.timeBank=0; save();
+    if(!confirm('Tout débloquer pour les 6 équipes (+ finale) ?'))return;
+    for(let i=1;i<=6;i++){
+      const t=S.teams[i];
+      t.unlocked=[true,true,true,true];
+      t.solved=[true,true,true,true];
+      t.timeBank=0;
+    }
+    S.finaleRevealed=true;
+    save();
     _curTeam=1; _curTab=0;
     _buildTabs(); _updateHeader(); _renderBalise(0);
     this.showView('missionView');
@@ -1318,6 +1861,13 @@ window.G = {
   coordReset(){
     if(!confirm('Reset ALL progress? Cannot be undone.'))return;
     for(let i=1;i<=6;i++) S.teams[i]=mkTeam();
+    save(); _buildCoordDash();
+  },
+
+  gmToggle(teamId, stopIdx){
+    const t=S.teams[teamId];
+    if(!t.gmCheck) t.gmCheck=[false,false,false,false];
+    t.gmCheck[stopIdx]=!t.gmCheck[stopIdx];
     save(); _buildCoordDash();
   },
 
@@ -1376,6 +1926,12 @@ function _buildTabs(){
   cf.textContent='📁 CASE FILE';
   cf.onclick=()=>G.switchTab(5);
   tabs.appendChild(cf);
+  // Suspects (toujours disponible, ouvre l'image directement)
+  const sus=document.createElement('div');
+  sus.className='btab suspects-tab';
+  sus.textContent='👤 SUSPECTS';
+  sus.onclick=()=>G.openSuspectsCard();
+  tabs.appendChild(sus);
 }
 
 function _renderTab(idx){
@@ -1404,8 +1960,8 @@ function _renderBalise(si){
         <span class="lock-icon">🔒</span>
         <div class="lock-title">STARTING CODE</div>
         <div class="lock-sub">${isFirst
-          ? 'Les Agents Pfister et Somsois vous donneront le code<br>pour reveler votre premiere destination.'
-          : 'Retournez voir les Agents Pfister et Somsois au hub.<br>Ils genereront votre prochain code.'
+          ? 'Detective Pfister et Detective Somsois vous donneront le code<br>pour reveler votre premiere destination.'
+          : 'Retournez voir Detective Pfister et Detective Somsois au hub.<br>Ils vous donneront votre prochain code.'
         }</div>
         <div class="pin-row">
           <input id="pinInput" class="pin-input" type="text" maxlength="8"
@@ -1431,16 +1987,16 @@ function _renderBalise(si){
 
   content.innerHTML=`
     <div class="parch-zone">
-      <div class="loc-line">📍 ${clue.loc}</div>
+      <div class="loc-line" id="locLine">📍 ${clue.loc}</div>
       <div class="loc-title">${clue.title}</div>
 
       <div class="mission-block">
-        <div class="mission-label">🎬 VIDEO / PHOTO MISSION</div>
-        <div class="mission-text">${clue.mission_en}</div>
+        <div class="mission-label" id="missionLabel">🎬 VIDEO / PHOTO MISSION</div>
+        <div class="mission-text" id="missionText">${clue.mission_en}</div>
       </div>
 
       <div class="clue-block">
-        <div class="clue-label">🔍 CLUE</div>
+        <div class="clue-label" id="clueLabel">🔍 CLUE</div>
         <div class="clue-text" id="clueText">${clue.riddle_en}</div>
         <div class="clue-attr">${clue.attr}</div>
       </div>
@@ -1457,12 +2013,11 @@ function _renderBalise(si){
         </div>
         <span class="hint-link" onclick="G.toggleHint()">Clue / Indice</span>
         <div class="hint-text" id="hintBox">${clue.hint_en}</div>
-        ${!jokerGone?`<div class="joker-row"><button class="joker-btn" id="jokerBtn" onclick="G.useJoker()">JOKER 🇫🇷</button></div>`:''}
+        ${!jokerGone?`<div class="joker-row"><button class="joker-btn" id="jokerBtn" onclick="G.useJoker()">🇫🇷 JOKER TRADUCTION</button></div>`:''}
       ` : `
         <div style="background:rgba(58,138,76,.1);border:1px solid rgba(58,138,76,.3);padding:14px;margin-bottom:16px;text-align:center;font-family:'Oswald',sans-serif;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:#3a8a4c;">✓ SOLVED — EVIDENCE UNLOCKED</div>
         <img class="ev-img" src="${clue.img}" alt="Evidence" onerror="this.style.display='none'">
-        <div class="ev-text" id="evText" data-fr="0">${clue.ev_en}</div>
-        <button class="ev-fr-btn" id="evFrBtn" onclick="G.toggleEvFr()">🇫🇷 Voir en français</button>
+        <button class="next-stop-btn" style="background:transparent;border:1px solid var(--gold);color:var(--gold);margin-bottom:10px;" onclick="G.switchTab(5)">📁 VOIR LE TABLEAU D'ENQUÊTE</button>
         <button class="next-stop-btn" onclick="${isLast?'G.goHub()':'G.nextStop()'}">
           ${isLast?'→ HUB FINAL':'NEXT STOP →'}
         </button>
@@ -1512,28 +2067,45 @@ function _renderCaseFile(){
   const finaleUnlocked=S.finaleRevealed||false;
 
   const unlockedStops=new Set();
-  route.stops.forEach((cid,i)=>{ if(team.solved[i]) unlockedStops.add(cid); });
-  if(finaleUnlocked) unlockedStops.add(0);
+  if(finaleUnlocked){
+    for(let i=1;i<=8;i++) unlockedStops.add(i);
+    unlockedStops.add(0);
+  } else {
+    route.stops.forEach((cid,i)=>{ if(team.solved[i]) unlockedStops.add(cid); });
+  }
 
-  const nSolved=team.solved.filter(Boolean).length;
-  const nUnlocked=unlockedStops.size;
+  // Carte SUSPECTS débloquée dès qu'au moins une balise est résolue
+  const suspectsUnlocked = finaleUnlocked || team.solved.some(s=>s);
+  const nUnlocked = finaleUnlocked ? 8 : [...unlockedStops].filter(s=>s!==0).length;
 
-  // Build zone overlays
-  let zones='';
-  BOARD_ZONES.forEach(z=>{
-    const locked = z.sid===0 ? !finaleUnlocked : !unlockedStops.has(z.sid);
-    const docUrl = DOC_URLS[z.sid] || '';
-    if(locked){
-      zones+=`<div class="bz" style="left:${z.l}%;top:${z.t}%;width:${z.w}%;height:${z.h}%;">
-        <div class="bz-blur"></div>
-        <div class="bz-lock-wrap"><span class="bz-lock-icon">${'🔒'}</span></div>
+  // Ordre logique des 8 balises : Lily, Somerset, Ravensdale, Affiche, Blackwell, Note, Davenport, Lyceum
+  const logicalOrder = [7, 5, 6, 4, 1, 2, 3, 8];
+
+  let cards='';
+
+  // 1. Lettre Augusta en premier (révélée à la finale, pleine largeur)
+  if(finaleUnlocked){
+    const url = DOC_URLS[0] || '';
+    cards += `<div class="cf-card cf-open cf-card-augusta" onclick="G.openDoc(0)">
+      <div class="cf-card-label">LETTRE D'AUGUSTA THORNE — DÉCHIRÉE</div>
+      <img class="cf-card-img" src="${url}" alt="">
+    </div>`;
+  }
+
+  // 2. Les 8 balises dans l'ordre logique
+  for(const sid of logicalOrder){
+    const open = unlockedStops.has(sid);
+    if(open){
+      const url = DOC_URLS[sid] || '';
+      const label = (CLUES[sid] && CLUES[sid].loc) ? CLUES[sid].loc : `BALISE ${sid}`;
+      cards += `<div class="cf-card cf-open" onclick="G.openDoc(${sid})">
+        <div class="cf-card-label">${label}</div>
+        <img class="cf-card-img" src="${url}" alt="">
       </div>`;
     } else {
-      zones+=`<div class="bz bz-open" style="left:${z.l}%;top:${z.t}%;width:${z.w}%;height:${z.h}%;" onclick="G.openDoc(${z.sid})">
-        <div class="bz-tap">TAP TO VIEW</div>
-      </div>`;
+      cards += `<div class="cf-card cf-locked"><span class="cf-lock-big">🔒</span></div>`;
     }
-  });
+  }
 
   content.innerHTML=`
     <div class="cf-header">
@@ -1541,31 +2113,57 @@ function _renderCaseFile(){
       <span class="cf-count">${nUnlocked} / 8</span>
       <span class="cf-status ${finaleUnlocked?'cf-open-status':'cf-sealed-status'}">${finaleUnlocked?'REVEALED':'SEALED'}</span>
     </div>
-    <div class="board-wrap">
-      <img class="board-img" src="${BOARD_URL}" alt="Board">
-      ${zones}
+    <div class="cf-grid">
+      ${cards}
     </div>
   `;
 }
 
 function _buildSuspects(){
   const grid=document.getElementById('suspectGrid'); grid.innerHTML='';
-  let sel=null;
   SUSPECTS.forEach(s=>{
     const div=document.createElement('div');
     div.className='s-card';
     div.innerHTML=`<div class="s-name">${s.name}</div><div class="s-role">${s.role}</div>`;
-    div.onclick=()=>{
-      document.querySelectorAll('.s-card').forEach(c=>c.classList.remove('sel'));
-      div.classList.add('sel'); sel=s.id;
-      const ab=document.getElementById('accuseBtn');
-      ab.style.display=''; ab.onclick=()=>G.accuseSuspect(s.id);
-    };
     grid.appendChild(div);
   });
-  document.getElementById('accuseBtn').style.display='none';
-  document.getElementById('verdictBox').style.display='none';
   document.getElementById('suspectGrid').style.display='';
+}
+
+let _anagText='';
+function _renderAnag(){
+  const out=document.getElementById('anagOutput');
+  if(out) out.textContent=_anagText||'\u00A0';
+}
+function _buildAnagKeys(){
+  const keys=document.getElementById('anagKeys'); if(!keys)return;
+  keys.innerHTML='';
+  for(let i=0;i<26;i++){
+    const ch=String.fromCharCode(65+i);
+    const b=document.createElement('div');
+    b.className='anag-key'; b.textContent=ch;
+    b.onclick=()=>G.anagKey(ch);
+    keys.appendChild(b);
+  }
+}
+function _showVictory(){
+  document.getElementById('finaleVerdictSection').style.display='none';
+  const wrap=document.querySelector('.finale-wrap');
+  const v=document.createElement('div');
+  v.id='victorySection';
+  v.innerHTML=`
+    <div class="victory-crest">⚖</div>
+    <div class="victory-title">CASE CLOSED</div>
+    <div class="victory-sub">METROPOLITAN POLICE · SCOTLAND YARD</div>
+    <div class="victory-body">
+      The killer is <b>VICTOR ASHCOMBE</b>.<br><br>
+      He stole Eleanor Marsh's play, sold its rights for ten thousand pounds, and silenced her with laudanum on the night of the premiere.<br><br>
+      Thanks to your work, the truth is known. Eleanor Marsh will have her curtain call after all.
+    </div>
+    <div class="victory-foot">— Detective Pfister &amp; Detective Somsois, with the compliments of Scotland Yard</div>
+  `;
+  wrap.appendChild(v);
+  window.scrollTo(0,0);
 }
 
 function _buildCoordDash(){
@@ -1574,10 +2172,17 @@ function _buildCoordDash(){
     const r=ROUTES[id],t=S.teams[id];
     const row=document.createElement('div'); row.className='c-row';
     const dots=r.stops.map((_,i)=>{
-      const cls=t.solved[i]?' done':t.unlocked[i]?' cur':'';
-      return `<div class="c-dot${cls}">${r.stops[i]}</div>`;
+      const gm=(t.gmCheck&&t.gmCheck[i]);
+      const cls=gm?' gmok':t.solved[i]?' done':t.unlocked[i]?' cur':'';
+      return `<div class="c-dot${cls}" onclick="G.gmToggle(${id},${i})" title="Cliquer pour valider (visuel)">${r.stops[i]}</div>`;
     }).join('');
-    row.innerHTML=`<div class="c-tname" style="color:${r.color}">Éq.${id} ${r.name}</div><div class="c-dots">${dots}</div>`;
+    // Codes par balise pour cette équipe (1894 pour balise 0, codes uniques pour 1/2/3)
+    const codes = r.stops.map((_,i)=>{
+      const code = computeStopCode(id, i);
+      const cls = t.solved[i] ? 'done' : t.unlocked[i] ? 'cur' : '';
+      return `<span class="c-code ${cls}" title="Balise ${i+1}">B${i+1}: <b>${code}</b></span>`;
+    }).join(' ');
+    row.innerHTML=`<div class="c-tname" style="color:${r.color}">Éq.${id} ${r.name}</div><div class="c-dots">${dots}</div><div class="c-codes">${codes}</div>`;
     prog.appendChild(row);
   }
   const ak=document.getElementById('cAnswerKey');
