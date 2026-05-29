@@ -1032,15 +1032,13 @@ body{
       <span class="finale-orn">✦ · · · ✦</span>
       <div class="finale-title">The Last Curtain Call</div>
       <div class="finale-sub">Punch &amp; Judy · East Piazza, Covent Garden</div>
-      <div class="finale-clue" id="finaleClueText"></div>
+      <img class="ev-img" id="finaleClueImg" src="" alt="Augusta's letter" style="margin-bottom:20px;cursor:pointer;" onclick="G.openDoc(0)">
       <button class="next-stop-btn" onclick="G.goAccuse()">CONTINUE →</button>
     </div>
     <div id="finaleVerdictSection" style="display:none">
       <span class="finale-orn">✦ · · · ✦</span>
       <div class="finale-title" style="margin-bottom:6px">Name the killer</div>
-      <div class="finale-sub">Study the suspects. Rearrange the letters. Accuse.</div>
-
-      <div class="suspect-grid" id="suspectGrid"></div>
+      <div class="finale-sub">"anagram anagram" she said</div>
 
       <div class="anag-box">
         <div class="anag-label">SCRATCH PAD / BROUILLON</div>
@@ -1764,9 +1762,7 @@ window.G = {
       fb.textContent='✓ The word is spoken. Augusta\'s letter appears...'; fb.className='ans-fb-p fb-ok';
       setTimeout(()=>{
         document.getElementById('finaleOrdealSection').style.display='none';
-        document.getElementById('finaleClueText').innerHTML=
-          FINAL_RIDDLE.replace(/\n/g,'<br>')+
-          '<span class="finale-clue-attr">— Augusta Thorne, 3 March 1894</span>';
+        document.getElementById('finaleClueImg').src = DOC_URLS[0];
         document.getElementById('finaleInput').value='';
         document.getElementById('finaleFb').textContent='';
         document.getElementById('finaleAnsSection').style.display='';
@@ -1786,7 +1782,6 @@ window.G = {
     _anagText='';
     _renderAnag();
     _buildAnagKeys();
-    _buildSuspects();
     window.scrollTo(0,0);
   },
 
